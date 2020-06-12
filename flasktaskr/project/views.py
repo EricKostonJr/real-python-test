@@ -6,6 +6,8 @@
 #################
 
 
+import datetime
+
 from forms import AddTaskForm, RegisterForm, LoginForm
 
 from functools import wraps
@@ -98,6 +100,8 @@ def new_task():
 				form.name.data,
 				form.due_date.data,
 				form.priority.data,
+				datetime.datetime.utcnow(),
+				'1',
 				'1'
 			)
 			db.session.add(new_task)
