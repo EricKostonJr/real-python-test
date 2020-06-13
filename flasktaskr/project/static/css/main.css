@@ -143,3 +143,10 @@ label {
 .input-group input {
   width: 100%;
 }
+
+.error {
+  color: red;
+  font-size: .8em;
+  margin: 0px 20px;
+  background-color: #FFFFFF;
+}
