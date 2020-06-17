@@ -139,6 +139,19 @@ class AllTests(unittest.TestCase):
 		self.assertIn(b'Thanks for registering. Please login.', response.data)
 
 
+	def test_user_registration_error(self):
+		self.app.get('register/', follow_redirects=True)
+		self.register('Michael', 'michael@realpython.com', 'python', 'python')
+		self.app.get('register/', follow_redirects=True)
+		response = self.register(
+			'Michael', 'michael@realpython.com', 'python', 'python'
+		)
+		self.assertIn(
+			b'That username and/or email already exists.',
+			response.data
+		)
+
+
 	# users can log out
 	def test_logged_in_users_can_logout(self):
 		self.register(
