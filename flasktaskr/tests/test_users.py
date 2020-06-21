@@ -4,7 +4,7 @@
 import os
 import unittest
 
-from project import app, db
+from project import app, db, bcrypt
 from project._config import basedir
 from project.models import User
 
@@ -25,10 +25,13 @@ class UsersTests(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
+        app.config['DEBUG'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
             os.path.join(basedir, TEST_DB)
         self.app = app.test_client()
         db.create_all()
+
+        self.assertEquals(app.debug, False)
 
 
     # executed after each test
@@ -65,7 +68,11 @@ class UsersTests(unittest.TestCase):
 
 
     def create_user(self, name, email, password):
-        new_user = User(name=name, email=email, password=password)
+        new_user = User(
+            name=name,
+            email=email,
+            password=bcrypt.generate_password_hash(password)
+        )
         db.session.add(new_user)
         db.session.commit()
 
@@ -86,7 +93,8 @@ class UsersTests(unittest.TestCase):
 
 
     def test_users_can_register(self):
-        new_user = User("michael", "michael@herman.org", "michaelherman")
+        new_user = User("michael", "michael@herman.org",
+            bcrypt.generate_password_hash('michaelherman'))
         db.session.add(new_user)
         db.session.commit()
         test = db.session.query(User).all()
