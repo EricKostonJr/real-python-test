@@ -6,7 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 DATABASE = 'flasktaskr.db'
 WTF_CSRF_ENABLED = True
 SECRET_KEY = os.environ['SECRET_KEY']
-DEBUG = True
+DEBUG = False
 
 
 # define the full path for the database
