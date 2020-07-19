@@ -1,13 +1,10 @@
-# Submitting to a web form
+# XML Parsing 3
 
 
-import requests
+from xml.etree import ElementTree as et
 
-url = 'http://httpbin.org/post'
-data = {'fname': 'Michael', 'lname': 'Herman'}
+# parse the file
+doc = et.parse('cars.xml')
 
-# submit post request
-r = requests.post(url, data=data)
-
-# display the response to screen
-print(r.text)
+# outputs the first MODEL in the file
+print(doc.find('CAR/MODEL').text)
