@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootswatch/3.4.1/flatly/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>My Todo List</title>
+</head>
+<body>
+	<div class="container">
+		<h1>My Todo List</h1>
+		<p class="lead">Get yourself organized!</p>
+		<br>
+		<form id="my-form" role="form">
+			<input id="my-input" class="form-control" type="text" placeholder="Enter a todo...">
+		</form>
+		<br>
+		<button id="btn-click" class="btn btn-primary btn-md">Submit!</button>
+		<br>
+		<br>
+		<h2>Todos</h2>
+		<h3>
+			<ol class="results"></ol>
+		</h3>
+	</div>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="main.js"></script>
+</body>
+</html>
